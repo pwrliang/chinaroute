@@ -18,4 +18,4 @@ cat delegated-all-latest | grep ipv6 | grep TW | awk -F\| '{ printf("%s/%d\n", $
 cat cnroute_ipv6.txt hkroute_ipv6.txt moroute_ipv6.txt twroute_ipv6.txt | sort >chinaroute_ipv6.txt
 rm delegated*
 python ../chinaroute.py
-python ../ocserv-no-route.py
+python ../ocserv-cn-no-route.py
