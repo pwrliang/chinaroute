@@ -1,3 +1,5 @@
+mkdir tmp 2>/dev/null
+cd tmp
 wget -N http://ftp.afrinic.net/pub/stats/afrinic/delegated-afrinic-extended-latest
 wget -N http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-extended-latest
 wget -N http://ftp.arin.net/pub/stats/arin/delegated-arin-extended-latest
@@ -15,7 +17,5 @@ cat delegated-all-latest | grep ipv6 | grep MO | awk -F\| '{ printf("%s/%d\n", $
 cat delegated-all-latest | grep ipv6 | grep TW | awk -F\| '{ printf("%s/%d\n", $4, $5) }' >twroute_ipv6.txt
 cat cnroute_ipv6.txt hkroute_ipv6.txt moroute_ipv6.txt twroute_ipv6.txt | sort >chinaroute_ipv6.txt
 rm delegated*
-python chinaroute.py
-git add .
-git commit -m "`date`"
-git push origin master
+python ../chinaroute.py
+python ../ocserv-no-route.py
